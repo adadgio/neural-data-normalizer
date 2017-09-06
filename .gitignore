@@ -1,0 +1,12 @@
+*.log
+/dist
+/typings
+/node_modules
+/test/artillery*.json
+!/dist/.gitkeep
+
+# Elastic Beanstalk Files
+.ebignore
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

@@ -1,0 +1,36 @@
+{
+  "name": "lyrics",
+  "version": "1.0.0",
+  "description": "A typescript framework",
+  "repository": "https://github.com/adadgio/nodejs-typescript-starter",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "start": "npm run watch",
+    "test": "node dist/index.js",
+    "watch": "npm run build:live",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts --env=dev",
+    "build": "tsc"
+  },
+  "keywords": [
+    "node",
+    "typescript",
+    "Neural networks",
+    "Synaptic.js",
+    "Data manipulation"
+  ],
+  "author": "Romain Bruckert",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^7.0.0",
+    "nodemon": "^1.11.0",
+    "ts-node": "^3.1.0",
+    "typescript": "^2.4.1",
+    "typescript-watcher": "^0.0.4"
+  },
+  "dependencies": {
+    "synaptic": "^1.1.1"
+  }
+}
