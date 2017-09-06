@@ -39,8 +39,6 @@ console.log(metadata);
 console.log(inputs);
 console.log(outputs);
 
-// why metadata ?
-
 // and pass that to the network (see synaptic.js)
 // const network = new Architect.Perceptron(nbrInputs, 7, nbrOutputs);
 // const trainer = new Trainer(network);
