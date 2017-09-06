@@ -2,7 +2,7 @@
   "name": "neural-data-normalizer",
   "version": "1.0.0",
   "description": "Data to bits normalization helpers script to use with neural network.",
-  "repository": "https://github.com/adadgio/nodejs-typescript-starter",
+  "repository": "https://github.com/adadgio/neural-data-normalizer",
   "main": "dist/index.js",
   "engines": {
     "node": ">=6.0.0"
