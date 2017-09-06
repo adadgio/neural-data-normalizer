@@ -1,7 +1,7 @@
 {
-  "name": "lyrics",
+  "name": "neural-data-normalizer",
   "version": "1.0.0",
-  "description": "A typescript framework",
+  "description": "Data to bits normalization helpers script to use with neural network.",
   "repository": "https://github.com/adadgio/nodejs-typescript-starter",
   "main": "dist/index.js",
   "engines": {
