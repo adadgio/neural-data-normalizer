@@ -5,7 +5,7 @@ As my grandfather used to say (probably), **neural networks** are dumb. When the
 This is library **convert datasets of human data** into **arrays of bits** understandable for neurons (duh).
 
 *Disclaimer*:
-This script was made when i tested the awesome (https://github.com/cazala/synaptic)[synaptic.js] neural network elibrary and might not suit all sorts of inputs. Its mainly meant to be able to quickly have test data from example given around the web for neural networks input.
+This script was made when i tested the awesome [synaptic.js](https://github.com/cazala/synaptic) neural network library and might not suit all sorts of inputs. Its mainly meant to be able to quickly have test data from example given around the web for neural networks input.
 
 ## Cut the crap, show me how to
 
