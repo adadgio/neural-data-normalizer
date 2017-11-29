@@ -1,5 +1,4 @@
 *.log
-/dist
 /typings
 /node_modules
 /test/artillery*.json
