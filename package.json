@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "npm run watch",
-    "test": "node dist/index.js",
+    "test": "node dist/src/index.js",
     "watch": "npm run build:live",
     "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts --env=dev",
     "build": "tsc"
