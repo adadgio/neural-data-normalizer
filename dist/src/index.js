@@ -17,7 +17,10 @@ var nbrOutputs = normalizer.getOutputLength();
 var metadata = normalizer.getDatasetMetaData();
 var inputs = normalizer.getBinaryInputDataset();
 var outputs = normalizer.getBinaryOutputDataset();
+console.log('\n', '\x1b[37m\x1b[46m', 'METADATA:', '\x1b[0m');
 console.log(metadata);
+console.log('\n', '\x1b[37m\x1b[42m', 'INPUT:', '\x1b[0m');
 console.log(inputs);
+console.log('\n', '\x1b[37m\x1b[44m', 'OUTPUT:', '\x1b[0m');
 console.log(outputs);
 //# sourceMappingURL=index.js.map
