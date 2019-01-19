@@ -1,7 +1,7 @@
 /**
  * Test and examples.
- * Notes: does only work if inputs and outputs rows
- * are always of the same length. You cant ommit one field in sampleData[2] for instance.
+ * Notes: does only work if inputs and outputs rows are
+ * always of the same length. You cant ommit one field in sampleData[2] for instance.
  * NULL and empty values are not really handled and can cause bugs, but i guess
  * its probably your job to normalize that data before ?
  *
