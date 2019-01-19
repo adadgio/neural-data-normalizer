@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Data to bits normalization helpers script to use with neural network.",
   "repository": "https://github.com/adadgio/neural-data-normalizer",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "engines": {
     "node": ">=6.0.0"
   },
