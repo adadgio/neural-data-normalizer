@@ -23,15 +23,20 @@ export class Normalizer
     constructor(data: Array<RowInput> = [])
     {
         this.dataset = data;
-        
+
+        // prevent empty data input
+        if (true !== Array.isArray(data)) {
+            throw new Error('\x1b[37m\x1b[44mNormalizer input data should be an array of rows: [{...}, {...}]\x1b[0m')
+        }
+
         // prevent empty data input
         if (this.dataset.length <= 0 ) {
-            throw new Error(`Normalizer input data shouldn't be empty`);
+            throw new Error(`\x1b[37m\x1b[44mNormalizer input data shouldn't be empty\x1b[0m`);
         }
 
         // prevent data rows to contain no properties
         if (Object.keys(this.dataset[0]).length <= 0) {
-            throw new Error(`Normalizer input data rows has to contain some properties (only 1st row is checked)`);
+            throw new Error(`\x1b[37m\x1b[44mNormalizer input data rows has to contain some properties (only 1st row is checked)\x1b[0m`);
         }
     }
 
