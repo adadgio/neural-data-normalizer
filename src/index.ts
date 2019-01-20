@@ -8,6 +8,10 @@
  * @author Romain Bruckert
  */
 import { RowInput, Normalizer } from './normalizer';
+import { Loader } from './loader';
+
+const sampleData0 = Loader.fromJsonFile(`${__dirname}/../models/user.model.json`)
+// console.log(sampleData0)
 
 const sampleData: Array<RowInput> = [
     { "soilhum": 500, "airtemp": 32, "airhum": 18, "water": true, "plants": ["tomatoes", "potatoes"], "tempSpan": [34, 54] },
@@ -18,10 +22,10 @@ const sampleData: Array<RowInput> = [
     { "soilhum": 1050, "airtemp": 56, "airhum": 26, "water": true, "plants": ["potatoes", "french fries"], "tempSpan": [8, 45.8] },
 ];
 
-// const normalizer = new Normalizer(sampleData0);
+const normalizer = new Normalizer(sampleData0);
 
 // setting required options and normalize the data
-normalizer.setOutputProperties(['water'])
+normalizer.setOutputProperties(['expert'])
 normalizer.normalize()
 
 // find useful information about your data
