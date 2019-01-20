@@ -180,7 +180,11 @@ export class Normalizer
                     metadata[prop].distinctValues = distinctStrVals;
                 break;
                 case 'array':
+                    const arrMinMax: any = this.get2DimArrayMinMax(prop, this.dataset);
                     const distinctArrVals = this.getDistinctArrayVals(prop, this.dataset);
+
+                    metadata[prop].min = arrMinMax[0]
+                    metadata[prop].max = arrMinMax[1]
                     metadata[prop].distinctValues = distinctArrVals;
                 break;
             }
@@ -195,19 +199,62 @@ export class Normalizer
         return this;
     }
 
-    getMinMax(prop: string, data: Array<RowInput>): Array<number>
+    getMinMax(prop: string, data: Array<RowInput>)
     {
-        let min: number = null;
-        let max: number = null;
+        let min: number = null
+        let max: number = null
 
         for (let i in data) {
-            const val: any = data[i][prop];
+            let val: any = data[i][prop]
 
-            if (min === null || val < min) { min = val; }
-            if (max === null || val > max) { max = val; }
+            if (min === null || val < min) { min = val }
+            if (max === null || val > max) { max = val }
         }
 
-        return [min, max];
+        return [min, max]
+    }
+
+    getFlatArrMinMax(arr: Array<any>)
+    {
+        let min: number = null
+        let max: number = null
+
+        if (typeof arr[0] === 'string') {
+            return [min, max]
+        }
+
+        for (let i in arr) {
+            if (typeof arr[i] !== 'number') { continue }
+            let val: number = parseFloat(arr[i])
+
+            if (min === null || val < min) { min = val }
+            if (max === null || val > max) { max = val }
+        }
+
+        return [min, max]
+    }
+
+    get2DimArrayMinMax(prop: string, data: any)
+    {
+        let min: number = null
+        let max: number = null
+
+        let mins: Array<number> = []
+        let maxs: Array<number> = []
+
+        for(let row of data) {
+            const arr = row[prop] // this is itself a 1 dim array
+
+            let minMax = this.getFlatArrMinMax(arr)
+
+            mins.push(minMax[0])
+            maxs.push(minMax[1])
+        }
+        
+        min = this.getFlatArrMinMax(mins)[0]
+        max = this.getFlatArrMinMax(maxs)[1]
+
+        return [min, max]
     }
 
     getDistinctVals(property: string, data: Array<RowInput>)
@@ -219,11 +266,11 @@ export class Normalizer
             const val = row[property];
 
             if (distinctValues.indexOf(val) === -1) {
-                distinctValues.push(val);
+                distinctValues.push(val)
             }
         }
 
-        return distinctValues;
+        return distinctValues
     }
 
     getDistinctArrayVals(property: string, data: Array<RowInput>)
@@ -239,7 +286,7 @@ export class Normalizer
                     distinctValues.push(val);
                 }
             }
-            }
+        }
 
         return distinctValues;
     }
