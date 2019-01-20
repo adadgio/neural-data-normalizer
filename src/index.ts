@@ -18,7 +18,7 @@ const sampleData: Array<RowInput> = [
     { "soilhum": 1050, "airtemp": 56, "airhum": 26, "water": true, "plants": ["potatoes", "french fries"], "tempSpan": [8, 45.8] },
 ];
 
-// const normalizer = new Normalizer(sampleData0);
+const normalizer = new Normalizer(sampleData)
 
 // setting required options and normalize the data
 normalizer.setOutputProperties(['water'])
