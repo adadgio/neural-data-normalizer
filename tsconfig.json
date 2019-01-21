@@ -11,8 +11,7 @@
         "emitDecoratorMetadata": true,
         "removeComments": true,
         "noImplicitAny": false,
-        "baseUrl": ".",
-        "rootDir": "."
+        "rootDir": "src"
     },
     "exclude": [
         "dist",
