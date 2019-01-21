@@ -122,7 +122,10 @@ var Normalizer = (function () {
                     metadata[prop].distinctValues = distinctStrVals;
                     break;
                 case 'array':
+                    var arrMinMax = this.get2DimArrayMinMax(prop, this.dataset);
                     var distinctArrVals = this.getDistinctArrayVals(prop, this.dataset);
+                    metadata[prop].min = arrMinMax[0];
+                    metadata[prop].max = arrMinMax[1];
                     metadata[prop].distinctValues = distinctArrVals;
                     break;
             }
@@ -147,11 +150,47 @@ var Normalizer = (function () {
         }
         return [min, max];
     };
+    Normalizer.prototype.getFlatArrMinMax = function (arr) {
+        var min = null;
+        var max = null;
+        if (typeof arr[0] === 'string') {
+            return [min, max];
+        }
+        for (var i in arr) {
+            if (typeof arr[i] !== 'number') {
+                continue;
+            }
+            var val = parseFloat(arr[i]);
+            if (min === null || val < min) {
+                min = val;
+            }
+            if (max === null || val > max) {
+                max = val;
+            }
+        }
+        return [min, max];
+    };
+    Normalizer.prototype.get2DimArrayMinMax = function (prop, data) {
+        var min = null;
+        var max = null;
+        var mins = [];
+        var maxs = [];
+        for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
+            var row = data_1[_i];
+            var arr = row[prop];
+            var minMax = this.getFlatArrMinMax(arr);
+            mins.push(minMax[0]);
+            maxs.push(minMax[1]);
+        }
+        min = this.getFlatArrMinMax(mins)[0];
+        max = this.getFlatArrMinMax(maxs)[1];
+        return [min, max];
+    };
     Normalizer.prototype.getDistinctVals = function (property, data) {
         var count = 0;
         var distinctValues = [];
-        for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
-            var row = data_1[_i];
+        for (var _i = 0, data_2 = data; _i < data_2.length; _i++) {
+            var row = data_2[_i];
             var val = row[property];
             if (distinctValues.indexOf(val) === -1) {
                 distinctValues.push(val);
@@ -162,8 +201,8 @@ var Normalizer = (function () {
     Normalizer.prototype.getDistinctArrayVals = function (property, data) {
         var count = 0;
         var distinctValues = [];
-        for (var _i = 0, data_2 = data; _i < data_2.length; _i++) {
-            var row = data_2[_i];
+        for (var _i = 0, data_3 = data; _i < data_3.length; _i++) {
+            var row = data_3[_i];
             var arrVal = row[property];
             for (var _a = 0, arrVal_1 = arrVal; _a < arrVal_1.length; _a++) {
                 var val = arrVal_1[_a];
@@ -226,4 +265,3 @@ var Normalizer = (function () {
     return Normalizer;
 }());
 exports.Normalizer = Normalizer;
-//# sourceMappingURL=normalizer.js.map

@@ -1,17 +1,17 @@
 {
   "name": "neural-data-normalizer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Data to bits normalization helpers script to use with neural network.",
   "repository": "https://github.com/adadgio/neural-data-normalizer",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "engines": {
     "node": ">=6.0.0"
   },
   "scripts": {
-    "start": "npm run watch",
-    "test": "node dist/src/index.js",
+    "start": "node ./dist/index.js",
+    "test": "node dist/demo.js",
     "watch": "npm run build:live",
-    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts --env=dev",
+    "build:live": "tsc --watch",
     "build": "tsc"
   },
   "keywords": [
@@ -31,6 +31,6 @@
     "typescript-watcher": "^0.0.4"
   },
   "dependencies": {
-    "synaptic": "^1.1.1"
+    "synaptic": "^1.1.4"
   }
 }
